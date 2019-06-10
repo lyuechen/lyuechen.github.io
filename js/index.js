@@ -77,7 +77,7 @@ function display_weather() {
 }
 
 var statusPos = 0;
-var welcomeMessage = "欢迎来到 我的小小世界！";
+var welcomeMessage = "Welcome to My Website!"//"欢迎来到 我的小小世界！";
 function display_status_message() {
     window.status = welcomeMessage.substring(statusPos, welcomeMessage.length) + "                   ";
     welcomeMessage.substring(0, statusPos);
