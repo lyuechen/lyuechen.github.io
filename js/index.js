@@ -77,7 +77,7 @@ function display_weather() {
 }
 
 var statusPos = 0;
-var welcomeMessage = "Welcome to My Website!"//"欢迎来到 我的小小世界！";
+var welcomeMessage = "欢迎来到 我的小小世界！";
 function display_status_message() {
     window.status = welcomeMessage.substring(statusPos, welcomeMessage.length) 
         + "                   " 
@@ -86,30 +86,6 @@ function display_status_message() {
 
     if (statusPos > welcomeMessage.length) statusPos = 0;
 }
-
-msg="This is an example of scrolling message";
-
-spacer="............ .............";
-
-pos=0;
-
-function ScrollMessage()
-
-{
-
-window.status=msg.substring(pos,msg.length)+spacer+
-
-msg.substring(0,pos);
-
-pos++;
-
-if(pos>msg.length)pos=0;
-
-window.setTimeout("ScrollMessage()",100);
-
-}
-
-ScrollMessage();
 
 window.onload = function () {
     var body = document.body;
