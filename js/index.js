@@ -2,6 +2,7 @@ function refresh_clock() {
     var refresh = 1000; // Refresh rate in milli seconds
     setTimeout('display_clock()', refresh);
     setTimeout('display_weather()', 600000);
+    setTimeout('display_status_message', 100);
 }
 
 function display_clock() {
@@ -73,6 +74,16 @@ function display_weather() {
     };
 
     request.send();
+}
+
+var statusPos = 0;
+var welcomeMessage = "欢迎来到 我的小小世界！";
+function display_status_message() {
+    window.status = welcomeMessage.substring(statusPos, welcomeMessage.length) + "                   ";
+    welcomeMessage.substring(0, statusPos);
+    statusPos++;
+
+    if (statusPos > welcomeMessage.length) statusPos = 0;
 }
 
 window.onload = function () {
