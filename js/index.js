@@ -91,6 +91,7 @@ window.onload = function () {
     body.style.background = 'url(../images/3.jpg)';
 
     display_weather();
+    display_status_message();
 
     var change_btn = document.getElementById("change_btn");
     change_btn.onclick = function ()/*点击事件*/ {
