@@ -1,6 +1,7 @@
 function refresh_clock() {
     var refresh = 1000; // Refresh rate in milli seconds
-    setTimeout('display_clock()', refresh)
+    setTimeout('display_clock()', refresh);
+    setTimeout('display_weather()', 600000);
 }
 
 function display_clock() {
@@ -49,9 +50,36 @@ function display_clock() {
     refresh_clock();
 }
 
+function display_weather() {
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://www.tianqiapi.com/api/?version=v1&cityid=101010100', true);
+    request.onload = function () {
+
+        var update_time = "";
+        var weather_detail = "";
+
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+            update_time = " 天气信息更新于 " + data.update_time.substring(11) + ' !';
+
+            weather_detail = data.city + " " + '<img height="30" src="../images/weather/' + data.data[0].wea_img + '.png">' + data.data[0].wea + " " + data.data[0].tem;
+        } else {
+            weather_detail = "Opps! The weather information can't be got!";
+        }
+
+        document.getElementById("weather_detail").innerHTML = weather_detail;
+        document.getElementById("update_time").innerHTML = update_time;
+    };
+
+    request.send();
+}
+
 window.onload = function () {
     var body = document.body;
     body.style.background = 'url(../images/3.jpg)';
+
+    display_weather();
 
     var change_btn = document.getElementById("change_btn");
     change_btn.onclick = function ()/*点击事件*/ {
