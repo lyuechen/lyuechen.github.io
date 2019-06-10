@@ -1,8 +1,8 @@
 function refresh_clock() {
     var refresh = 1000; // Refresh rate in milli seconds
     setTimeout('display_clock()', refresh);
+    window.setTimeout('display_status_message', 100);
     setTimeout('display_weather()', 600000);
-    setTimeout('display_status_message', 100);
 }
 
 function display_clock() {
