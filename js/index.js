@@ -87,6 +87,30 @@ function display_status_message() {
     if (statusPos > welcomeMessage.length) statusPos = 0;
 }
 
+msg="This is an example of scrolling message";
+
+spacer="............ .............";
+
+pos=0;
+
+function ScrollMessage()
+
+{
+
+window.status=msg.substring(pos,msg.length)+spacer+
+
+msg.substring(0,pos);
+
+pos++;
+
+if(pos>msg.length)pos=0;
+
+window.setTimeout("ScrollMessage()",100);
+
+}
+
+ScrollMessage();
+
 window.onload = function () {
     var body = document.body;
     body.style.background = 'url(../images/3.jpg)';
