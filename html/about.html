@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chen Liangyue's About Me</title>
     <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <script type="text/javascript" src="../js/db.js"></script>
     <script type="text/javascript" src="../js/preloader.js"></script>
     <script type="text/javascript" src="../js/resume.js"></script>
 </head>
@@ -70,8 +71,15 @@
     </div>
 
     <div class="search-container">
-        <input type="text" placeholder="Search..">
-        <button type="submit"><i class="fa fa-search"></i></button>
+        <input id="search_text" type="text" size="30" name="q" placeholder="Search..">
+
+        <button id="search_btn" type="submit" name="Search"><i class="fa fa-search"></i></button>
+
+        <select id="search_type" name="selecttype">
+            <option value="google">Google</option>
+            <option value="baidu" selected>百度</option>
+            <option value="lyuechen">站内搜</option>
+        </select>
     </div>
 
     </div>
