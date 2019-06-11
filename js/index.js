@@ -107,26 +107,4 @@ window.onload = function () {
 
     var clock = document.getElementById("clock");
     clock.onload = display_clock();
-
-    // Get the input field and button
-    var search_text = document.getElementById("search_text");
-    var search_btn = document.getElementById("search_btn");
-    var search_type = document.getElementById("search_type");
-    // Execute a function when the user releases a key on the keyboard
-    search_text.addEventListener("keyup", function(event) {
-        // Number 13 is the "Enter" key on the keyboard
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            search_btn.click();
-        }
-    });
-    search_btn.onclick = function () {
-        if (search_type.value == "google") {
-            location.href = "https://www.google.com/search?ie=UTF-8&q=" + search_text.value;
-        } else {
-            location.href = "http://www.baidu.com/s?wd=" + search_text.value;
-        }
-    };
 };
