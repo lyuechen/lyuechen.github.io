@@ -62,9 +62,9 @@ function display_weather() {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response);
         if (request.status >= 200 && request.status < 400) {
-            update_time = " 天气信息更新于 " + data.update_time.substring(11) + ' !';
+            update_time = " 天气信息更新于 " + data.update_time.substring(5) + ' !';
 
-            weather_detail = data.city + " " + '<img height="30" src="../images/weather/' + data.data[0].wea_img + '.png">' + data.data[0].wea + " " + data.data[0].tem;
+            weather_detail = data.city + " " + data.data[0].date + "(" + data.data[0].week + ")" + '<img height="30" src="../images/weather/' + data.data[0].wea_img + '.png">' + data.data[0].wea + " " + data.data[0].tem;
         } else {
             weather_detail = "Opps! The weather information can't be got!";
         }
@@ -107,4 +107,26 @@ window.onload = function () {
 
     var clock = document.getElementById("clock");
     clock.onload = display_clock();
+
+    // Get the input field and button
+    var search_text = document.getElementById("search_text");
+    var search_btn = document.getElementById("search_btn");
+    var search_type = document.getElementById("search_type");
+    // Execute a function when the user releases a key on the keyboard
+    search_text.addEventListener("keyup", function(event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            search_btn.click();
+        }
+    });
+    search_btn.onclick = function () {
+        if (search_type.value == "google") {
+            location.href = "https://www.google.com/search?ie=UTF-8&q=" + search_text.value;
+        } else {
+            location.href = "http://www.baidu.com/s?wd=" + search_text.value;
+        }
+    };
 };
